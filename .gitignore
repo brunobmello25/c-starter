@@ -1,0 +1,25 @@
+# Ignore build directory
+/build/
+
+# Ignore object files
+*.o
+
+# Ignore binaries
+my_project
+test_runner
+
+# Ignore temporary files (e.g., from editors)
+*.tmp
+*.bak
+
+# Ignore editor-specific files (e.g., from IDEs)
+*.swp          # Vim swap files
+*.swo          # Vim swap files
+*.DS_Store     # macOS Finder files
+.idea/         # JetBrains IDEs
+.vscode/       # Visual Studio Code settings
+
+# Ignore logs
+*.log
+
+#
