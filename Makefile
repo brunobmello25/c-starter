@@ -21,11 +21,22 @@ OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 # Name of the target executable
 TARGET = $(BIN_DIR)/$(PROJECT_NAME)
 
+# Default target
+all: $(TARGET)
+
 run: $(TARGET)
 	./$(TARGET)
 
-# Default target
-all: $(TARGET)
+build: $(TARGET)
+	./$(TARGET)
+
+# Test target
+test: $(TEST_BIN)
+	./$(TEST_BIN)  # Execute the test binary
+
+# Clean up
+clean:
+	rm -rf $(OBJ_DIR)/*.o $(TARGET) $(TEST_BIN)
 
 # Linking the application executable
 $(TARGET): $(OBJS)
@@ -41,13 +52,5 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(TEST_BIN): $(OBJ_DIR)/math_utils.o $(TEST_DIR)/test_math_utils.c
 	@mkdir -p $(BIN_DIR)
 	$(CC) -o $@ $(TEST_DIR)/test_math_utils.c $(OBJ_DIR)/math_utils.o $(CFLAGS)
-
-# Test target
-test: $(TEST_BIN)
-	./$(TEST_BIN)  # Execute the test binary
-
-# Clean up
-clean:
-	rm -rf $(OBJ_DIR)/*.o $(TARGET) $(TEST_BIN)
 
 .PHONY: all clean test
