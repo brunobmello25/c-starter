@@ -32,7 +32,7 @@ build: $(TARGET)
 
 # Test target
 test: $(TEST_BIN)
-	./$(TEST_BIN)  # Execute the test binary
+	./$(TEST_BIN)
 
 # Clean up
 clean:
